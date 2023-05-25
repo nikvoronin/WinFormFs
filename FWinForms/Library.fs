@@ -13,7 +13,7 @@ module App =
     let initSysRender =
         Application.EnableVisualStyles()
         Application.SetCompatibleTextRenderingDefault(false)
-        Application.SetHighDpiMode(HighDpiMode.PerMonitorV2) |> ignore
+        Application.SetHighDpiMode(HighDpiMode.SystemAware) |> ignore
 
     // Start application with given form
     let runWith (form: Form) =
