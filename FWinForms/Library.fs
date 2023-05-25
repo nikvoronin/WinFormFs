@@ -5,7 +5,7 @@ open System.Drawing
 open System.Diagnostics
 
 [<Literal>]
-let ``FWinForms Version`` = "3.5.13-alpha"
+let ``FWinForms Version`` = "3.5.25-alpha"
 
 
 module App =
@@ -64,12 +64,12 @@ module ToolStrip =
 module Menu =
     let separator = ToolStrip.separator
 
-    let sub (text: string) click : ToolStripItem =
+    let verb (text: string) click : ToolStripItem =
         let item = new ToolStripMenuItem(text)
         item.Click.Add( click )
         item
 
-    let top (text: string) (items: ToolStripItem seq) : ToolStripItem =
+    let strip (text: string) (items: ToolStripItem seq) : ToolStripItem =
         let root = new ToolStripMenuItem(text)
         root.DropDownItems.AddRange(Array.ofSeq items)
         root
