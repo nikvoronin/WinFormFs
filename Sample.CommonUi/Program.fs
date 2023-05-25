@@ -56,7 +56,21 @@ let mainForm =
         ]
     |> Form.initEnd
 
+let mainNotifyIcon =
+    SystemTray.createIcon Stub.systemAppIcon__TODO
+    |> SystemTray.contextMenu
+        ( Menu.createContext
+            [ Menu.sub "&Open..." Stub.doNothingA__TODO
+            ; Menu.sub "&Save As..." Stub.doNothingA__TODO
+            ; Menu.separator ()
+            ; Menu.sub "&Quit" App.exitA
+            ]
+        )
+    |> SystemTray.showIcon true
+
 [<EntryPoint; STAThread>]
 let main argv =
+    use _ = mainNotifyIcon
+
     App.initSysRender
     App.runWith mainForm
