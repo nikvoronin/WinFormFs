@@ -10,13 +10,13 @@ let mainForm =
     let mainMenu =
         Menu.create
             [ Menu.strip "&File"
-                [ Menu.verb "&Open..." Stub.doNothingA__TODO
-                ; Menu.verb "&Save As..." Stub.doNothingA__TODO
+                [ Menu.stub__TODO "&Open..."
+                ; Menu.stub__TODO "&Save As..."
                 ; Menu.separator ()
                 ; Menu.verb "&Quit" App.exitA
                 ]
-            ; Menu.strip "&Edit" []
-            ; Menu.strip "&View" []
+            ; Menu.stub__TODO "&Edit"
+            ; Menu.stub__TODO "&View"
             ; Menu.strip "&Help"
                 [ Menu.verb
                     "&Technical Details 🚀"
@@ -60,13 +60,13 @@ let mainNotifyIcon =
     SystemTray.createIcon Stub.systemAppIcon__TODO
     |> SystemTray.contextMenu
         ( Menu.createContext
-            [ Menu.verb "&Open..." Stub.doNothingA__TODO
-            ; Menu.verb "&Save As..." Stub.doNothingA__TODO
+            [ Menu.stub__TODO "&Open..."
+            ; Menu.stub__TODO "&Save As..."
             ; Menu.separator ()
             ; Menu.verb "&Quit" App.exitA
             ]
         )
-    |> SystemTray.showIcon true
+    |> SystemTray.showIcon
 
 [<EntryPoint; STAThread>]
 let main argv =

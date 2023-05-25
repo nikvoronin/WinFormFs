@@ -69,6 +69,10 @@ module Menu =
         item.Click.Add( click )
         item
 
+    let stub__TODO (text: string) =
+        let root = new ToolStripMenuItem(text)
+        root
+
     let strip (text: string) (items: ToolStripItem seq) : ToolStripItem =
         let root = new ToolStripMenuItem(text)
         root.DropDownItems.AddRange(Array.ofSeq items)
@@ -154,7 +158,7 @@ module SystemTray =
         notifyIcon.ContextMenuStrip <- menu
         notifyIcon
 
-    let notifyText (hintText: string) (notifyIcon: NotifyIcon) : NotifyIcon =
+    let updateText (hintText: string) (notifyIcon: NotifyIcon) : NotifyIcon =
         notifyIcon.Text <- hintText
         notifyIcon
 
@@ -162,6 +166,10 @@ module SystemTray =
         notifyIcon.Icon <- icon
         notifyIcon
 
-    let showIcon (show: bool) (notifyIcon: NotifyIcon) : NotifyIcon =
-        notifyIcon.Visible <- show
+    let showIcon (notifyIcon: NotifyIcon) =
+        notifyIcon.Visible <- true
+        notifyIcon
+
+    let hideIcon (notifyIcon: NotifyIcon) =
+        notifyIcon.Visible <- false
         notifyIcon
