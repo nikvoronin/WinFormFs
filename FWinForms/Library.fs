@@ -88,6 +88,7 @@ module Menu =
         menu.Items.AddRange (Array.ofSeq items) |> ignore
         menu
 
+
 module MessageBox =
     /// Show message box with text, caption and default OK button
     let showText text caption =
@@ -147,6 +148,7 @@ module Layout =
         panel.Dock <- DockStyle.Fill // TODO: add as argument
         panel.Controls.AddRange(Array.ofSeq controls)
         panel
+
 
 module SystemTray =
     let createIcon (icon: Icon) =

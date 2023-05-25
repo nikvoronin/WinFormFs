@@ -19,12 +19,12 @@ let mainForm =
             ; "&View" |> Menu.stub__TODO
             ; "&Help" |> Menu.strip
                 [ "&Technical Details 🚀"
-                    |> Menu.verb (fun x -> (
+                    |> Menu.verb (fun _ -> (
                         Sys.openUrlInBrowser
                             GitHubProjectUrl ))
                 ; Menu.separator ()
                 ; $"&About {AppName}"
-                    |> Menu.verb (fun x -> (
+                    |> Menu.verb (fun _ -> (
                         MessageBox.showText
                             $"{AppName} v{``FWinForms Version``}"
                             $"About {AppName}" ))
@@ -45,7 +45,7 @@ let mainForm =
     |> Form.addControls
         [ Layout.panel
             [ "Test"
-                |> Control.button (fun x -> (
+                |> Control.button (fun _ -> (
                     MessageBox.showText
                         $"TEST * TEST * TEST"
                         $"{AppName}"))
@@ -62,8 +62,7 @@ let mainNotifyIcon =
             [ "&Open..." |> Menu.stub__TODO
             ; "&Save As..." |> Menu.stub__TODO
             ; Menu.separator ()
-            ; "&Quit"
-                |> Menu.verb App.exitA
+            ; "&Quit" |> Menu.verb App.exitA
             ]
         )
     |> SystemTray.showIcon
