@@ -9,7 +9,8 @@ let GitHubProjectUrl = "https://github.com/nikvoronin/FWinForms"
 let mainForm =
     let mainMenu =
         Menu.create
-            [ "&File" |> Menu.strip
+            [ "&File"
+                |> Menu.strip
                 [ "&Open..." |> Menu.stub__TODO
                 ; "&Save As..." |> Menu.stub__TODO
                 ; Menu.separator ()
@@ -17,7 +18,8 @@ let mainForm =
                 ]
             ; "&Edit" |> Menu.stub__TODO
             ; "&View" |> Menu.stub__TODO
-            ; "&Help" |> Menu.strip
+            ; "&Help"
+                |> Menu.strip
                 [ "&Technical Details 🚀"
                     |> Menu.verb (fun _ -> (
                         Sys.openUrlInBrowser
