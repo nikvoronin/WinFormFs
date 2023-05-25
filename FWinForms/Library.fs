@@ -64,7 +64,7 @@ module ToolStrip =
 module Menu =
     let separator = ToolStrip.separator
 
-    let verb (text: string) click : ToolStripItem =
+    let verb click (text: string) : ToolStripItem =
         let item = new ToolStripMenuItem(text)
         item.Click.Add( click )
         item
@@ -73,7 +73,7 @@ module Menu =
         let root = new ToolStripMenuItem(text)
         root
 
-    let strip (text: string) (items: ToolStripItem seq) : ToolStripItem =
+    let strip (items: ToolStripItem seq) (text: string) : ToolStripItem =
         let root = new ToolStripMenuItem(text)
         root.DropDownItems.AddRange(Array.ofSeq items)
         root
@@ -133,7 +133,7 @@ module StatusBar =
 
 
 module Control =
-    let button (text: string) click =
+    let button click (text: string) =
         let button = new Button()
         button.Text <- text
         button.Click.Add(click)

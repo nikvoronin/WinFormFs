@@ -9,33 +9,33 @@ let GitHubProjectUrl = "https://github.com/nikvoronin/FWinForms"
 let mainForm =
     let mainMenu =
         Menu.create
-            [ Menu.strip "&File"
-                [ Menu.stub__TODO "&Open..."
-                ; Menu.stub__TODO "&Save As..."
+            [ "&File" |> Menu.strip
+                [ "&Open..." |> Menu.stub__TODO
+                ; "&Save As..." |> Menu.stub__TODO
                 ; Menu.separator ()
-                ; Menu.verb "&Quit" App.exitA
+                ; "&Quit" |> Menu.verb App.exitA
                 ]
-            ; Menu.stub__TODO "&Edit"
-            ; Menu.stub__TODO "&View"
-            ; Menu.strip "&Help"
-                [ Menu.verb
-                    "&Technical Details 🚀"
-                    (fun x -> (Sys.openUrlInBrowser GitHubProjectUrl))
+            ; "&Edit" |> Menu.stub__TODO
+            ; "&View" |> Menu.stub__TODO
+            ; "&Help" |> Menu.strip
+                [ "&Technical Details 🚀"
+                    |> Menu.verb (fun x -> (
+                        Sys.openUrlInBrowser
+                            GitHubProjectUrl ))
                 ; Menu.separator ()
-                ; Menu.verb
-                   $"&About {AppName}"
-                    (fun x -> (
+                ; $"&About {AppName}"
+                    |> Menu.verb (fun x -> (
                         MessageBox.showText
                             $"{AppName} v{``FWinForms Version``}"
-                            $"About {AppName}"))
+                            $"About {AppName}" ))
                 ]
             ]
 
     let mainStatusBar =
         StatusBar.create
-            [ StatusBar.label "Ready"
+            [ "Ready" |> StatusBar.label
             ; StatusBar.separator ()
-            ; StatusBar.label "Want to know more? Select 'Help → ..."
+            ; "Want to know more? Select 'Help → ..." |> StatusBar.label
             ]
 
     "WinForms ♥ F#"
@@ -44,9 +44,8 @@ let mainForm =
     |> Form.clientSize 640 400
     |> Form.addControls
         [ Layout.panel
-            [ Control.button
-                "Test"
-                (fun x -> (
+            [ "Test"
+                |> Control.button (fun x -> (
                     MessageBox.showText
                         $"TEST * TEST * TEST"
                         $"{AppName}"))
@@ -60,10 +59,11 @@ let mainNotifyIcon =
     SystemTray.createIcon Stub.systemAppIcon__TODO
     |> SystemTray.contextMenu
         ( Menu.createContext
-            [ Menu.stub__TODO "&Open..."
-            ; Menu.stub__TODO "&Save As..."
+            [ "&Open..." |> Menu.stub__TODO
+            ; "&Save As..." |> Menu.stub__TODO
             ; Menu.separator ()
-            ; Menu.verb "&Quit" App.exitA
+            ; "&Quit"
+                |> Menu.verb App.exitA
             ]
         )
     |> SystemTray.showIcon
