@@ -79,6 +79,10 @@ module Menu =
         menu.Items.AddRange (Array.ofSeq items) |> ignore
         menu
 
+    let createContext (items: ToolStripItem seq) =
+        let menu = new ContextMenuStrip()
+        menu.Items.AddRange (Array.ofSeq items) |> ignore
+        menu
 
 module MessageBox =
     /// Show message box with text, caption and default OK button
@@ -106,6 +110,7 @@ module Sys =
 module Stub =
     /// Just a stub for event handlers. Lets do nothing
     let doNothingA__TODO = fun x -> ()
+    let systemAppIcon__TODO = SystemIcons.Application
 
 
 module StatusBar =
@@ -138,3 +143,25 @@ module Layout =
         panel.Dock <- DockStyle.Fill // TODO: add as argument
         panel.Controls.AddRange(Array.ofSeq controls)
         panel
+
+module SystemTray =
+    let createIcon (icon: Icon) =
+        let notifyIcon = new NotifyIcon ()
+        notifyIcon.Icon <- icon
+        notifyIcon
+
+    let contextMenu (menu: ContextMenuStrip) (notifyIcon: NotifyIcon) : NotifyIcon =
+        notifyIcon.ContextMenuStrip <- menu
+        notifyIcon
+
+    let notifyText (hintText: string) (notifyIcon: NotifyIcon) : NotifyIcon =
+        notifyIcon.Text <- hintText
+        notifyIcon
+
+    let changeIcon (icon: Icon) (notifyIcon: NotifyIcon) : NotifyIcon =
+        notifyIcon.Icon <- icon
+        notifyIcon
+
+    let showIcon (show: bool) (notifyIcon: NotifyIcon) : NotifyIcon =
+        notifyIcon.Visible <- show
+        notifyIcon
