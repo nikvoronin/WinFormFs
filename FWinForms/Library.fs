@@ -127,6 +127,9 @@ module FControl =
         |> setup init
 
 
+module FButton =
+    let create = FControl.create<Button>
+
 module Layout =
     let panel (controls: Control seq) =
         let panel = new Panel()

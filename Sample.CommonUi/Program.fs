@@ -49,24 +49,24 @@ let mainForm =
     |> Form.beginInit
     |> Form.addControls
         [ Layout.panel
-            [ FControl.create (fun (btn: Button) -> (
+            [ FButton.create (fun btn -> (
+                btn.Text <- "Test #1"
+                btn.Top <- 0
+                btn.Left <- 0
                 btn.Click.Add (fun _ -> (
                     MessageBox.Show(
                         $"TEST * TEST * TEST"
                         , $"{AppName}"
                     ) |> ignore
                 ))
-                btn.Text <- "Test #1"
-                btn.Top <- 0
-                btn.Left <- 0
               ))
-            ; FControl.create<Button> (fun btn -> (
-                btn.Click.Add Stub.doNothingA__TODO
-                btn.Enabled <- false
+            ; FButton.create (fun btn -> (
                 btn.Text <- "Test #2"
+                btn.Enabled <- false
                 btn.Anchor <-
                     AnchorStyles.Left 
                     ||| AnchorStyles.Bottom
+                btn.Click.Add Stub.doNothingA__TODO
               ))
             ]
             |> FControl.setup (fun x -> (
