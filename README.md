@@ -1,7 +1,5 @@
 # WinForms ♥ F\#
 
-printf \``FWinForms Version``
-
 - Application w-or-without windows
 - Windows (Form)
 - Menus
@@ -20,6 +18,10 @@ printf \``FWinForms Version``
 - System tray (NotifyIcon)
 
 ## History
+
+```fsharp
+printfn $"{``FWinForms Version``}"
+```
 
 ### 3.5.25-alpha
 
