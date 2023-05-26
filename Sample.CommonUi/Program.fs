@@ -44,10 +44,9 @@ let mainForm =
     "WinForms ♥ F#"
     |> Form.create
     |> Form.beginInit
-    |> Form.clientSize 640 400
     |> Form.addControls
         [ Layout.panel
-            [ Control.create (fun (btn: Button) ->(
+            [ FControl.create (fun (btn: Button) ->(
                 btn.Click.Add (fun _ -> (
                     MessageBox.showText
                         $"TEST * TEST * TEST"
@@ -57,14 +56,16 @@ let mainForm =
                 btn.Top <- 0
                 btn.Left <- 0
                 ))
-            ; Control.create<Button> (fun btn ->(
+            ; FControl.create<Button> (fun btn ->(
                 btn.Click.Add Stub.doNothingA__TODO
                 btn.Enabled <- false
                 btn.Text <- "Test #2"
-                btn.Anchor <- AnchorStyles.Left ||| AnchorStyles.Bottom
+                btn.Anchor <-
+                    AnchorStyles.Left 
+                    ||| AnchorStyles.Bottom
                 ))
             ]
-            |> Control.setup (fun x -> (
+            |> FControl.setup (fun x -> (
                 x.BorderStyle <- BorderStyle.Fixed3D
                 x.Dock <- DockStyle.Fill
                 ))
@@ -72,6 +73,9 @@ let mainForm =
         ; mainMenu
         ]
     |> Form.initEnd
+    |> FControl.setup (fun form ->(
+        form.ClientSize <- System.Drawing.Size(640, 400)
+        ))
 
 let mainNotifyIcon =
     SystemTray.createIcon Stub.systemAppIcon__TODO

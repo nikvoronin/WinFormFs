@@ -29,14 +29,6 @@ module App =
 
 
 module Form =
-    let title caption (form: Form) =
-        form.Text <- caption
-        form
-
-    let clientSize width height (form: Form) =
-        form.ClientSize <- new Size(width, height)
-        form
-
     let addControls (controls: Control seq) (form: Form) : Form =
         form.Controls.AddRange( Array.ofSeq controls)
         form
@@ -53,8 +45,9 @@ module Form =
         form
 
     let create (caption: string) =
-        new Form()
-        |> title caption
+        let form = new Form()
+        form.Text <- caption
+        form
 
 
 module ToolStrip =
@@ -134,12 +127,12 @@ module StatusBar =
 // TODO: Add StatusBar controls: ToolStripProgressBar, ToolStripButton
 
 
-module Control =
-    let setup init x =
+module FControl =
+    let setup init (x: 'a when 'a :> Control) =
         init x
         x
 
-    let create<'a when 'a : (new : unit -> 'a)> init =
+    let create<'a when 'a : (new : unit -> 'a) and 'a :> Control> init =
         new 'a ()
         |> setup init
 
