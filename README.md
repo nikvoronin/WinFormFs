@@ -11,8 +11,7 @@
 - System operations
     - Open URL in system browser
 - StatusBar (StatusStrip)
-- Controls
-    - Button
+- Controls (any Control class descendants)
 - Layouts
     - Panel
 - System tray (NotifyIcon)
@@ -30,4 +29,4 @@ printfn $"{``FWinForms Version``}"
 ### 3.5.25-alpha
 
 - System tray (NotifyIcon).
-- Changed order of arguments, it starts from title now: `"Click me" |> Control.button`
+- Changed order of arguments, it starts from title now: `"Click me" |> StatusBar.label`
