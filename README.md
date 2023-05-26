@@ -7,11 +7,10 @@
     - Separator
     - Popup menus (ContextMenu)
     - App main menu (MenuStrip)
-- MessageBox
 - System operations
     - Open URL in system browser
 - StatusBar (StatusStrip)
-- Controls (any Control class descendants)
+- Controls (any descendants of the Control class)
 - Layouts
     - Panel
 - System tray (NotifyIcon)

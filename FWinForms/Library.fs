@@ -83,16 +83,6 @@ module Menu =
         menu
 
 
-module MessageBox =
-    /// Show message box with text, caption and default OK button
-    let showText text caption =
-        MessageBox.Show
-            ( text= text
-            , caption= caption
-            )
-        |> ignore
-
-
 module Sys =
     /// Open URL in a system web browser. Call cmd start
     let openUrlInBrowser url =
@@ -117,7 +107,7 @@ module StatusBar =
 
     let create (items: ToolStripItem seq) =
         let bar = new StatusStrip()
-        bar.Items.AddRange(Array.ofSeq items) |> ignore
+        bar.Items.AddRange(Array.ofSeq items)
         bar
 
     let label (text: string) : ToolStripItem =

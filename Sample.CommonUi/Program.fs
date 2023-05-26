@@ -24,13 +24,16 @@ let mainForm =
                 [ "&Technical Details 🚀"
                     |> Menu.verb (fun _ -> (
                         Sys.openUrlInBrowser
-                            GitHubProjectUrl ))
+                            GitHubProjectUrl
+                       ))
                 ; Menu.separator ()
                 ; $"&About {AppName}"
                     |> Menu.verb (fun _ -> (
-                        MessageBox.showText
+                        MessageBox.Show(
                             $"{AppName} v{``FWinForms Version``}"
-                            $"About {AppName}" ))
+                            , $"About {AppName}"
+                        ) |> ignore
+                    ))
                 ]
             ]
 
@@ -46,36 +49,37 @@ let mainForm =
     |> Form.beginInit
     |> Form.addControls
         [ Layout.panel
-            [ FControl.create (fun (btn: Button) ->(
+            [ FControl.create (fun (btn: Button) -> (
                 btn.Click.Add (fun _ -> (
-                    MessageBox.showText
+                    MessageBox.Show(
                         $"TEST * TEST * TEST"
-                        $"{AppName}"
-                    ))
+                        , $"{AppName}"
+                    ) |> ignore
+                ))
                 btn.Text <- "Test #1"
                 btn.Top <- 0
                 btn.Left <- 0
-                ))
-            ; FControl.create<Button> (fun btn ->(
+              ))
+            ; FControl.create<Button> (fun btn -> (
                 btn.Click.Add Stub.doNothingA__TODO
                 btn.Enabled <- false
                 btn.Text <- "Test #2"
                 btn.Anchor <-
                     AnchorStyles.Left 
                     ||| AnchorStyles.Bottom
-                ))
+              ))
             ]
             |> FControl.setup (fun x -> (
                 x.BorderStyle <- BorderStyle.Fixed3D
                 x.Dock <- DockStyle.Fill
-                ))
+               ))
         ; mainStatusBar
         ; mainMenu
         ]
     |> Form.initEnd
     |> FControl.setup (fun form ->(
         form.ClientSize <- System.Drawing.Size(640, 400)
-        ))
+       ))
 
 let mainNotifyIcon =
     SystemTray.createIcon Stub.systemAppIcon__TODO
