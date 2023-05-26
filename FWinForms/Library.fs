@@ -3,9 +3,10 @@
 open System.Windows.Forms
 open System.Drawing
 open System.Diagnostics
+open System
 
 [<Literal>]
-let ``FWinForms Version`` = "3.5.25-alpha"
+let ``FWinForms Version`` = "3.5.27-alpha"
 
 
 module App =
@@ -134,18 +135,18 @@ module StatusBar =
 
 
 module Control =
-    let button click (text: string) =
-        let button = new Button()
-        button.Text <- text
-        button.Click.Add(click)
-        button
+    let setup init x =
+        init x
+        x
+
+    let create<'a when 'a : (new : unit -> 'a)> init =
+        new 'a ()
+        |> setup init
 
 
 module Layout =
     let panel (controls: Control seq) =
         let panel = new Panel()
-        panel.BorderStyle <- BorderStyle.Fixed3D // TODO: add as argument
-        panel.Dock <- DockStyle.Fill // TODO: add as argument
         panel.Controls.AddRange(Array.ofSeq controls)
         panel
 

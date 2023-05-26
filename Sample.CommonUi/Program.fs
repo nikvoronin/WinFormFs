@@ -1,5 +1,6 @@
 ﻿open System
 open FWinForms
+open System.Windows.Forms
 
 [<Literal>]
 let AppName = "FWinForms"
@@ -46,12 +47,27 @@ let mainForm =
     |> Form.clientSize 640 400
     |> Form.addControls
         [ Layout.panel
-            [ "Test"
-                |> Control.button (fun _ -> (
+            [ Control.create (fun (btn: Button) ->(
+                btn.Click.Add (fun _ -> (
                     MessageBox.showText
                         $"TEST * TEST * TEST"
-                        $"{AppName}"))
+                        $"{AppName}"
+                    ))
+                btn.Text <- "Test #1"
+                btn.Top <- 0
+                btn.Left <- 0
+                ))
+            ; Control.create<Button> (fun btn ->(
+                btn.Click.Add Stub.doNothingA__TODO
+                btn.Enabled <- false
+                btn.Text <- "Test #2"
+                btn.Anchor <- AnchorStyles.Left ||| AnchorStyles.Bottom
+                ))
             ]
+            |> Control.setup (fun x -> (
+                x.BorderStyle <- BorderStyle.Fixed3D
+                x.Dock <- DockStyle.Fill
+                ))
         ; mainStatusBar
         ; mainMenu
         ]
