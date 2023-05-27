@@ -10,6 +10,9 @@
 - System operations
     - Open URL in system browser
 - StatusBar (StatusStrip)
+    - Label
+    - ProgressBar
+    - Separator
 - Controls (any descendants of the Control class)
 - Layouts
     - Panel
@@ -21,11 +24,10 @@
 printfn $"{``FWinForms Version``}"
 ```
 
-### 3.5.27-alpha
+### 3.5.xx-alpha
 
+- Add flow layout panels aka stackPanel (both horizontal and vertical).
+- Add `ProgressBar` for `StatusBar`.
 - `Do` style `Ctrl.create|setup` to fine tuning descendants of the Control class.
-
-### 3.5.25-alpha
-
 - System tray (NotifyIcon).
-- Changed order of arguments, it starts from title now: `"Click me" |> StatusBar.label`
+- Changed order of arguments, it starts from title now: `"Click me" |> StatusBar.label`.
