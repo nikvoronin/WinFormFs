@@ -8,6 +8,8 @@ open System
 [<Literal>]
 let ``FWinForms Version`` = "3.5.27-alpha"
 
+let colorFrom c =
+    Color.FromKnownColor c
 
 module App =
     /// Configure HighDpi scalling for looking good
@@ -51,6 +53,10 @@ module Frm =
 
 
 module ToolStrip =
+    let setup init (x: 'a when 'a :> ToolStripItem) =
+        init x
+        x
+
     let separator () =
         new ToolStripSeparator()
 
@@ -109,11 +115,13 @@ module StatusBar =
         bar.Items.AddRange(Array.ofSeq items)
         bar
 
-    let label (text: string) : ToolStripItem =
+    let label (text: string) =
         let label = new ToolStripLabel(text)
         label
 
-// TODO: Add StatusBar controls: ToolStripProgressBar, ToolStripButton
+    let progress () =
+        let bar = new ToolStripProgressBar()
+        bar
 
 
 module Ctrl =

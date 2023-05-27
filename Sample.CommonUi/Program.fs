@@ -23,24 +23,38 @@ let mainForm =
             ; "&Help"
                 |> Menu.strip
                 [ "&Technical Details 🚀"
-                    |> Menu.verb (fun _ -> (
-                        Sys.openUrlInBrowser
-                            GitHubProjectUrl
-                       ))
+                    |> Menu.verb
+                        (fun _ ->
+                            Sys.openUrlInBrowser
+                                GitHubProjectUrl
+                        )
                 ; Menu.separator ()
                 ; $"&About {AppName}"
-                    |> Menu.verb (fun _ -> (
-                        MessageBox.Show(
-                            $"{AppName} v{``FWinForms Version``}"
-                            , $"About {AppName}"
-                        ) |> ignore
-                    ))
+                    |> Menu.verb
+                        (fun _ ->
+                            MessageBox.Show(
+                                $"{AppName} v{``FWinForms Version``}"
+                                , $"About {AppName}"
+                            ) |> ignore
+                        )
                 ]
             ]
 
     let mainStatusBar =
         StatusBar.create
-            [ "Ready" |> StatusBar.label
+            [ "Ready"
+                |> StatusBar.label
+                |> ToolStrip.setup
+                    (fun x ->
+                        x.BackColor <-
+                            colorFrom KnownColor.LightGreen
+                    )
+            ; StatusBar.separator ()
+            ; StatusBar.progress ()
+                |> ToolStrip.setup
+                    (fun x ->
+                        x.Style <- ProgressBarStyle.Marquee
+                    )
             ; StatusBar.separator ()
             ; "Want to know more? Select 'Help → ..." |> StatusBar.label
             ]
@@ -75,7 +89,6 @@ let mainForm =
             ]
             |> Ctrl.setup
                 (fun x ->
-                    x.BorderStyle <- BorderStyle.Fixed3D
                     x.Dock <- DockStyle.Fill
                 )
         ; mainStatusBar
