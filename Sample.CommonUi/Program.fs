@@ -63,12 +63,12 @@ let mainForm =
     |> Frm.create
     |> Frm.beginInit
     |> Frm.addControls
-        [ Layout.panel
+        [ Layout.flowV
             [ Btn.create
                 (fun btn ->
                     btn.Text <- "Test #1"
-                    btn.Top <- 0
-                    btn.Left <- 0
+                    //btn.Top <- 0
+                    //btn.Left <- 0
                     btn.Click.Add
                         (fun _ ->
                             MessageBox.Show(
@@ -81,9 +81,9 @@ let mainForm =
                 (fun btn ->
                     btn.Text <- "Test #2"
                     btn.Enabled <- false
-                    btn.Anchor <-
-                        AnchorStyles.Left 
-                        ||| AnchorStyles.Bottom
+                    //btn.Anchor <-
+                    //    AnchorStyles.Left 
+                    //    ||| AnchorStyles.Bottom
                     btn.Click.Add Stub.doNothingA__TODO
                 )
             ]

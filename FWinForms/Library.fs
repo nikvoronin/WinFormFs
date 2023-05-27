@@ -3,10 +3,9 @@
 open System.Windows.Forms
 open System.Drawing
 open System.Diagnostics
-open System
 
 [<Literal>]
-let ``FWinForms Version`` = "3.5.27-alpha"
+let ``FWinForms Version`` = "3.5.28-alpha"
 
 let colorFrom c =
     Color.FromKnownColor c
@@ -143,6 +142,19 @@ module Layout =
         panel.Controls.AddRange(Array.ofSeq controls)
         panel
 
+    let flowV (controls: Control seq) =
+        let panel = new FlowLayoutPanel()
+        panel.FlowDirection <- FlowDirection.TopDown
+        panel.Controls.AddRange(Array.ofSeq controls)
+        panel
+    let stackV = flowV
+
+    let flowH (controls: Control seq) =
+        let panel = new FlowLayoutPanel()
+        panel.FlowDirection <- FlowDirection.LeftToRight
+        panel.Controls.AddRange(Array.ofSeq controls)
+        panel
+    let stackH = flowH
 
 module SystemTray =
     let createIcon (icon: Icon) =
