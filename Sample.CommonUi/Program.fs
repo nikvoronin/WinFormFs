@@ -1,6 +1,7 @@
 ﻿open System
 open FWinForms
 open System.Windows.Forms
+open System.Drawing
 
 [<Literal>]
 let AppName = "FWinForms"
@@ -45,45 +46,50 @@ let mainForm =
             ]
 
     "WinForms ♥ F#"
-    |> Form.create
-    |> Form.beginInit
-    |> Form.addControls
+    |> Frm.create
+    |> Frm.beginInit
+    |> Frm.addControls
         [ Layout.panel
-            [ FButton.create (fun btn -> (
-                btn.Text <- "Test #1"
-                btn.Top <- 0
-                btn.Left <- 0
-                btn.Click.Add (fun _ -> (
-                    MessageBox.Show(
-                        $"TEST * TEST * TEST"
-                        , $"{AppName}"
-                    ) |> ignore
-                ))
-              ))
-            ; FButton.create (fun btn -> (
-                btn.Text <- "Test #2"
-                btn.Enabled <- false
-                btn.Anchor <-
-                    AnchorStyles.Left 
-                    ||| AnchorStyles.Bottom
-                btn.Click.Add Stub.doNothingA__TODO
-              ))
+            [ Btn.create
+                (fun btn ->
+                    btn.Text <- "Test #1"
+                    btn.Top <- 0
+                    btn.Left <- 0
+                    btn.Click.Add
+                        (fun _ ->
+                            MessageBox.Show(
+                                $"TEST * TEST * TEST"
+                                , $"{AppName}"
+                            ) |> ignore
+                        )
+                )
+            ; Btn.create
+                (fun btn ->
+                    btn.Text <- "Test #2"
+                    btn.Enabled <- false
+                    btn.Anchor <-
+                        AnchorStyles.Left 
+                        ||| AnchorStyles.Bottom
+                    btn.Click.Add Stub.doNothingA__TODO
+                )
             ]
-            |> FControl.setup (fun x -> (
-                x.BorderStyle <- BorderStyle.Fixed3D
-                x.Dock <- DockStyle.Fill
-               ))
+            |> Ctrl.setup
+                (fun x ->
+                    x.BorderStyle <- BorderStyle.Fixed3D
+                    x.Dock <- DockStyle.Fill
+                )
         ; mainStatusBar
         ; mainMenu
         ]
-    |> Form.initEnd
-    |> FControl.setup (fun form ->(
-        form.ClientSize <- System.Drawing.Size(640, 400)
-       ))
+    |> Frm.initEnd
+    |> Ctrl.setup
+        (fun form ->
+            form.ClientSize <- System.Drawing.Size(640, 400)
+        )
 
 let mainNotifyIcon =
-    SystemTray.createIcon Stub.systemAppIcon__TODO
-    |> SystemTray.contextMenu
+    SystemTray.createIcon SystemIcons.Application // TODO: STUB: replace with app-icon
+    |> SystemTray.setContextMenu
         ( Menu.createContext
             [ "&Open..." |> Menu.stub__TODO
             ; "&Save As..." |> Menu.stub__TODO

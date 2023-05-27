@@ -23,7 +23,7 @@ printfn $"{``FWinForms Version``}"
 
 ### 3.5.27-alpha
 
-- `Do` style `FControl.create` and `.setup` to fine tuning of the Control class descendants.
+- `Do` style `Ctrl.create|setup` to fine tuning descendants of the Control class.
 
 ### 3.5.25-alpha
 

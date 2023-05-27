@@ -28,7 +28,7 @@ module App =
     let exitA _ = Application.Exit()
 
 
-module Form =
+module Frm =
     let addControls (controls: Control seq) (form: Form) : Form =
         form.Controls.AddRange( Array.ofSeq controls)
         form
@@ -99,7 +99,6 @@ module Sys =
 module Stub =
     /// Just a stub for event handlers. Lets do nothing
     let doNothingA__TODO = fun x -> ()
-    let systemAppIcon__TODO = SystemIcons.Application
 
 
 module StatusBar =
@@ -117,7 +116,7 @@ module StatusBar =
 // TODO: Add StatusBar controls: ToolStripProgressBar, ToolStripButton
 
 
-module FControl =
+module Ctrl =
     let setup init (x: 'a when 'a :> Control) =
         init x
         x
@@ -127,8 +126,8 @@ module FControl =
         |> setup init
 
 
-module FButton =
-    let create = FControl.create<Button>
+module Btn =
+    let create = Ctrl.create<Button>
 
 module Layout =
     let panel (controls: Control seq) =
@@ -143,7 +142,7 @@ module SystemTray =
         notifyIcon.Icon <- icon
         notifyIcon
 
-    let contextMenu (menu: ContextMenuStrip) (notifyIcon: NotifyIcon) : NotifyIcon =
+    let setContextMenu (menu: ContextMenuStrip) (notifyIcon: NotifyIcon) : NotifyIcon =
         notifyIcon.ContextMenuStrip <- menu
         notifyIcon
 
