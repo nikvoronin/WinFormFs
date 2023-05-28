@@ -10,6 +10,15 @@ let ``FWinForms Version`` = "3.5.28-alpha"
 let colorFrom c =
     Color.FromKnownColor c
 
+let setup g (x: 'a) : 'a =
+    g x
+    x
+
+let create<'a when 'a : (new : unit -> 'a)> g =
+    new 'a ()
+    |> setup g
+
+
 module App =
     /// Configure HighDpi scalling for looking good
     let initSysRender =
@@ -52,10 +61,6 @@ module Frm =
 
 
 module ToolStrip =
-    let setup init (x: 'a when 'a :> ToolStripItem) =
-        init x
-        x
-
     let separator () =
         new ToolStripSeparator()
 
@@ -123,18 +128,9 @@ module StatusBar =
         bar
 
 
-module Ctrl =
-    let setup init (x: 'a when 'a :> Control) =
-        init x
-        x
-
-    let create<'a when 'a : (new : unit -> 'a) and 'a :> Control> init =
-        new 'a ()
-        |> setup init
-
-
 module Btn =
-    let create = Ctrl.create<Button>
+    let create = create<Button>
+
 
 module Layout =
     let panel (controls: Control seq) =

@@ -40,18 +40,19 @@ let mainForm =
                 ]
             ]
 
+    let mainStatusLabel = StatusBar.label "Ready" 
+
     let mainStatusBar =
         StatusBar.create
-            [ "Ready"
-                |> StatusBar.label
-                |> ToolStrip.setup
+            [ mainStatusLabel
+                |> setup
                     (fun x ->
                         x.BackColor <-
                             colorFrom KnownColor.LightGreen
                     )
             ; StatusBar.separator ()
             ; StatusBar.progress ()
-                |> ToolStrip.setup
+                |> setup
                     (fun x ->
                         x.Style <- ProgressBarStyle.Marquee
                     )
@@ -64,7 +65,7 @@ let mainForm =
     |> Frm.beginInit
     |> Frm.addControls
         [ Layout.flowV
-            [ Btn.create
+            [ create<Button>
                 (fun btn ->
                     btn.Text <- "Test #1"
                     //btn.Top <- 0
@@ -86,8 +87,24 @@ let mainForm =
                     //    ||| AnchorStyles.Bottom
                     btn.Click.Add Stub.doNothingA__TODO
                 )
+            ; create<ListBox>
+                (fun x ->
+                    x.Items.AddRange (
+                        Array.ofSeq<obj>
+                            [ "First"
+                            ; "Second"
+                            ; "Third"
+                            ]
+                    )
+                    x.SelectedIndexChanged.Add(
+                        (fun _ ->
+                            mainStatusLabel.Text <-
+                                string x.SelectedItem
+                        )
+                    )
+                )
             ]
-            |> Ctrl.setup
+            |> setup
                 (fun x ->
                     x.Dock <- DockStyle.Fill
                 )
@@ -95,7 +112,7 @@ let mainForm =
         ; mainMenu
         ]
     |> Frm.initEnd
-    |> Ctrl.setup
+    |> setup
         (fun form ->
             form.ClientSize <- System.Drawing.Size(640, 400)
         )
