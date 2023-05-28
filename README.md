@@ -26,8 +26,9 @@ printfn $"{``FWinForms Version``}"
 
 ### 3.5.xx-alpha
 
+- Add generic `create<Control>` which can create any control. Example of creating `ListBox` control
 - Add flow layout panels aka stackPanel (both horizontal and vertical).
 - Add `ProgressBar` for `StatusBar`.
-- `Do` style `Ctrl.create|setup` to fine tuning descendants of the Control class.
+- `Do` style `create` and `setup` to fine tuning descendants of the `Control` class.
 - System tray (NotifyIcon).
 - Changed order of arguments, it starts from title now: `"Click me" |> StatusBar.label`.
