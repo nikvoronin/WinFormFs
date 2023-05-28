@@ -78,7 +78,7 @@ let mainForm =
                             ) |> ignore
                         )
                 )
-            ; Btn.create
+            ; create<Button>
                 (fun btn ->
                     btn.Text <- "Test #2"
                     btn.Enabled <- false
@@ -96,7 +96,7 @@ let mainForm =
                             ; "Third"
                             ]
                     )
-                    x.SelectedIndexChanged.Add(
+                    x.SelectedIndexChanged.Add (
                         (fun _ ->
                             mainStatusLabel.Text <-
                                 string x.SelectedItem
@@ -114,7 +114,8 @@ let mainForm =
     |> Frm.initEnd
     |> setup
         (fun form ->
-            form.ClientSize <- System.Drawing.Size(640, 400)
+            form.ClientSize <-
+                System.Drawing.Size(640, 400)
         )
 
 let mainNotifyIcon =

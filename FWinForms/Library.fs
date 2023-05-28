@@ -128,10 +128,6 @@ module StatusBar =
         bar
 
 
-module Btn =
-    let create = create<Button>
-
-
 module Layout =
     let panel (controls: Control seq) =
         let panel = new Panel()
