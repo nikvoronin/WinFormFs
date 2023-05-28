@@ -40,7 +40,7 @@ let mainForm =
                 ]
             ]
 
-    let mainStatusLabel = StatusBar.label "Ready" 
+    let mainStatusLabel = StatusBar.label "Ready"
 
     let mainStatusBar =
         StatusBar.create
@@ -91,15 +91,19 @@ let mainForm =
                 (fun x ->
                     x.Items.AddRange (
                         Array.ofSeq<obj>
-                            [ "First"
-                            ; "Second"
-                            ; "Third"
+                            [ "LightGreen"
+                            ; "Magenta"
+                            ; "CornflowerBlue"
+                            ; "Yellow"
                             ]
                     )
+
                     x.SelectedIndexChanged.Add (
                         (fun _ ->
-                            mainStatusLabel.Text <-
-                                string x.SelectedItem
+                            let itemText = string x.SelectedItem
+                            mainStatusLabel.Text <- $" {itemText} "
+                            mainStatusLabel.BackColor <-
+                                Color.FromName (itemText)
                         )
                     )
                 )
