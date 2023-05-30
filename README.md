@@ -16,6 +16,7 @@
 - Controls (any descendants of the Control class)
 - Layouts
     - Panel
+    - Flow Layouts (or StackPanel in WPF terms), both vertical and/or horizontal
 - System tray (NotifyIcon)
 
 ## History
