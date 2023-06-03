@@ -40,7 +40,7 @@ module App =
 
 
 module Frm =
-    let addControls (controls: Control seq) (form: Form) : Form =
+    let addControls (controls: Control seq) (form: Form) =
         form.Controls.AddRange( Array.ofSeq controls)
         form
 
@@ -155,15 +155,15 @@ module SystemTray =
         notifyIcon.Icon <- icon
         notifyIcon
 
-    let setContextMenu (menu: ContextMenuStrip) (notifyIcon: NotifyIcon) : NotifyIcon =
+    let setContextMenu menu (notifyIcon: NotifyIcon) =
         notifyIcon.ContextMenuStrip <- menu
         notifyIcon
 
-    let updateText (hintText: string) (notifyIcon: NotifyIcon) : NotifyIcon =
+    let updateText hintText (notifyIcon: NotifyIcon) =
         notifyIcon.Text <- hintText
         notifyIcon
 
-    let changeIcon (icon: Icon) (notifyIcon: NotifyIcon) : NotifyIcon =
+    let changeIcon icon (notifyIcon: NotifyIcon) =
         notifyIcon.Icon <- icon
         notifyIcon
 

@@ -89,12 +89,12 @@ let mainForm =
                     btn.Click.Add Stub.doNothingA__TODO
                 )
             ; create<Label>
-                (fun x ->
-                    x.Text <- "Status color:"
+                (fun lbl ->
+                    lbl.Text <- "Status color:"
                 )
             ; create<ListBox>
-                (fun x ->
-                    x.Items.AddRange (
+                (fun lstBox ->
+                    lstBox.Items.AddRange (
                         Array.ofSeq<obj>
                             [ "LightGreen"
                             ; "Magenta"
@@ -103,9 +103,9 @@ let mainForm =
                             ]
                     )
 
-                    x.SelectedIndexChanged.Add (
+                    lstBox.SelectedIndexChanged.Add (
                         (fun _ ->
-                            let itemText = string x.SelectedItem
+                            let itemText = string lstBox.SelectedItem
                             mainStatusLabel.Text <- $" {itemText} "
                             mainStatusLabel.BackColor <-
                                 Color.FromName (itemText)
@@ -114,8 +114,8 @@ let mainForm =
                 )
             ]
             |> setup
-                (fun x ->
-                    x.Dock <- DockStyle.Fill
+                (fun flwPanel ->
+                    flwPanel.Dock <- DockStyle.Fill
                 )
         ; mainStatusBar
         ; mainMenu
