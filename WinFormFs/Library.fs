@@ -26,11 +26,12 @@ module App =
         Application.SetCompatibleTextRenderingDefault(false)
         Application.SetHighDpiMode(HighDpiMode.SystemAware) |> ignore
 
-    // Start application with given form
+    /// Starts application with given form
     let runWith (form: Form) =
         Application.Run(form)
         0
 
+    /// Starts window-less application 
     let run () =
         Application.Run()
 

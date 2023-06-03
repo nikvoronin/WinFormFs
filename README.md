@@ -1,4 +1,8 @@
-# WinFormFs <| Windows Forms + F\#
+# WinFormFs
+
+A subtle wrapper to convenient use of Windows Forms in F#
+
+## Features
 
 - Application w-or-without windows
 - Windows (Form)
