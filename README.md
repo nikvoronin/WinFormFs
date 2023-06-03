@@ -1,4 +1,4 @@
-# WinForms ♥ F\#
+# WinFormFs <| Windows Forms + F\#
 
 - Application w-or-without windows
 - Windows (Form)
@@ -19,10 +19,10 @@
     - Flow Layouts (or StackPanel in WPF terms), both vertical and/or horizontal
 - System tray (NotifyIcon)
 
-## History
+## Release Notes
 
 ```fsharp
-printfn $"{``FWinForms Version``}"
+printfn $"{``WinFormFs Version``}"
 ```
 
 ### 3.5.xx-alpha

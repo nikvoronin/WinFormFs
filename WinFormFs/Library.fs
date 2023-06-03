@@ -1,11 +1,11 @@
-﻿module FWinForms
+﻿module WinFormFs
 
 open System.Windows.Forms
 open System.Drawing
 open System.Diagnostics
 
 [<Literal>]
-let ``FWinForms Version`` = "3.5.28-alpha"
+let ``WinFormFs Version`` = "3.5.28-alpha"
 
 let colorFrom c =
     Color.FromKnownColor c

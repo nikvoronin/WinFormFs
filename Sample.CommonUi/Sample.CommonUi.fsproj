@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FWinForms\FWinForms.fsproj" />
+    <ProjectReference Include="..\WinFormFs\WinFormFs.fsproj" />
   </ItemGroup>
 
 </Project>

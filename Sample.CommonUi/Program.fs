@@ -1,12 +1,12 @@
 ﻿open System
-open FWinForms
+open WinFormFs
 open System.Windows.Forms
 open System.Drawing
 
 [<Literal>]
-let AppName = "FWinForms"
+let AppName = "WinFormFs"
 [<Literal>]
-let GitHubProjectUrl = "https://github.com/nikvoronin/FWinForms"
+let GitHubProjectUrl = "https://github.com/nikvoronin/WinFormFs"
 
 let mainForm =
     let mainMenu =
@@ -33,14 +33,15 @@ let mainForm =
                     |> Menu.verb
                         (fun _ ->
                             MessageBox.Show(
-                                $"{AppName} v{``FWinForms Version``}"
+                                $"{AppName} v{``WinFormFs Version``}"
                                 , $"About {AppName}"
                             ) |> ignore
                         )
                 ]
             ]
 
-    let mainStatusLabel = StatusBar.label "Ready"
+    let mainStatusLabel =
+        StatusBar.label "Ready"
 
     let mainStatusBar =
         StatusBar.create
@@ -67,7 +68,7 @@ let mainForm =
         [ Layout.flowV
             [ create<Button>
                 (fun btn ->
-                    btn.Text <- "Test #1"
+                    btn.Text <- "Popup Version"
                     //btn.Top <- 0
                     //btn.Left <- 0
                     btn.Click.Add
@@ -80,12 +81,16 @@ let mainForm =
                 )
             ; create<Button>
                 (fun btn ->
-                    btn.Text <- "Test #2"
+                    btn.Text <- "Disabled"
                     btn.Enabled <- false
                     //btn.Anchor <-
                     //    AnchorStyles.Left 
                     //    ||| AnchorStyles.Bottom
                     btn.Click.Add Stub.doNothingA__TODO
+                )
+            ; create<Label>
+                (fun x ->
+                    x.Text <- "Status color:"
                 )
             ; create<ListBox>
                 (fun x ->
