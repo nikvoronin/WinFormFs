@@ -5,7 +5,7 @@ open System.Drawing
 open System.Diagnostics
 
 [<Literal>]
-let ``WinFormFs Version`` = "3.5.28-alpha"
+let ``WinFormFs Version`` = "3.6.18-alpha"
 
 let colorFrom c =
     Color.FromKnownColor c
