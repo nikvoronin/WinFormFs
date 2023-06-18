@@ -96,16 +96,14 @@ module Menu =
 
 module Sys =
     /// Open URL in a system web browser. Call cmd start
-    let openUrlInBrowser url =
-        let procInfo =
-            new ProcessStartInfo
-                ( "cmd"
-                , $"/c start {url}"
-                )
-
-        procInfo.CreateNoWindow <- true
-        Process.Start(procInfo) |> ignore
-
+    let shellOpen path =
+        ProcessStartInfo 
+            ( FileName = path
+            , CreateNoWindow = true
+            , UseShellExecute = true
+            )
+        |> Process.Start
+        |> ignore
 
 module Stub =
     /// Just a stub for event handlers. Lets do nothing
